@@ -1,1 +1,72 @@
+# Challenge 7 – Koko’s Banana Buffet
+
+## Problem Overview
+Koko the monkey wants to eat all banana piles before the guards return in `k` hours.<br>
+She must choose a constant eating speed `s` (bananas per hour).<br>
+Determine the **minimum speed `s`** that allows her to finish all piles on time.<br>
+
+## Problem Statement
+Given an integer array `piles` and integer `k`:<br>
+- `piles[i]` = number of bananas in pile i<br>
+- `k` = total hours available<br>
+- Eating rule: each hour, Koko eats `s` bananas from a pile; if pile has fewer than `s`, finish it and move to next hour<br>
+Return the **minimum integer speed `s`** such that Koko finishes all piles within `k` hours.<br>
+
+## Function Requirement
+Write a function that:<br>
+- Takes an integer array `piles` and integer `k`<br>
+- Returns an integer representing minimum speed<br>
+
+**Function Name:** `calculate_minimum_speed(piles, k)`<br>
+
+## Constraints
+- `1 ≤ piles.size ≤ 10^4`<br>
+- `1 ≤ piles[i] ≤ 10^9`<br>
+- `piles.size ≤ k ≤ 10^9`<br>
+- Solution should handle large piles efficiently using Binary Search<br>
+
+## Examples
+
+**Example 1**<br>
+`piles = [5, 10, 3], k = 4`<br>
+Minimum speed = 5 bananas/hr<br>
+
+**Example 2**<br>
+`piles = [5, 10, 15, 20], k = 7`<br>
+Minimum speed = 10 bananas/hr<br>
+
+## Approaches
+
+### 1. Brute Force Approach
+
+**Idea**<br>
+- Try all speeds from 1 to max pile size<br>
+- Calculate total hours for each speed<br>
+- Return first speed satisfying hours ≤ k<br>
+
+**Time Complexity**<br>
+O(maxPile × n) — too slow for large piles<br>
+
+**Space Complexity**<br>
+O(1)<br>
+
+**Drawback**<br>
+Inefficient for large piles (10^9 bananas)
+
+### 2. Optimized Approach (Binary Search)
+
+**Idea**<br>
+- Binary search on possible speed range [1, maxPile]<br>
+- For each candidate speed, compute total hours<br>
+- Narrow search to find minimum feasible speed<br>
+
+**Time Complexity**<br>
+O(n × log(maxPile)) — efficient<br>
+
+**Space Complexity**<br>
+O(1)<br>
+
+## Conclusion
+Binary Search efficiently finds the minimum eating speed for Koko even when banana piles are very large.<br>
+Brute force is conceptually simple but impractical for real constraints.<br>
 
